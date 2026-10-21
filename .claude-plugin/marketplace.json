@@ -1,0 +1,14 @@
+{
+  "name": "wapp-local",
+  "description": "Wapp LTD local plugins for Claude Code.",
+  "owner": {
+    "name": "Zain, Wapp LTD"
+  },
+  "plugins": [
+    {
+      "name": "swiftui-context-optimiser",
+      "source": ".",
+      "description": "Token-saving rules, component reuse checks and memory digests for SwiftUI projects."
+    }
+  ]
+}

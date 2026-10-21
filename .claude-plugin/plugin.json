@@ -1,0 +1,10 @@
+{
+  "name": "swiftui-context-optimiser",
+  "version": "0.1.0",
+  "description": "Cuts token usage on SwiftUI projects: reuse-first component checks, no unrequested comments, ask-before-guessing, convention consistency, memory digests and filtered build output.",
+  "author": {
+    "name": "Zain, Wapp LTD"
+  },
+  "license": "MIT",
+  "keywords": ["swiftui", "ios", "tokens", "context", "memory", "xcode"]
+}

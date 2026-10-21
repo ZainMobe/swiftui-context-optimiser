@@ -1,0 +1,24 @@
+# {{PROJECT_NAME}}
+
+SwiftUI app. iOS {{MIN_IOS}}+, Swift {{SWIFT_VERSION}}. Package manager: {{PACKAGE_MANAGER}}.
+
+## Working rules
+- Reuse first: check .claude/swiftui-components.md before adding any View, modifier, style or helper; extend existing types rather than adding near-duplicates.
+- No code comments or doc comments unless asked.
+- Ask one precise question when a requirement is unclear instead of guessing.
+- Follow .claude/conventions.md for naming, folders and state management.
+- Grep before Read; read line ranges; use the Explore or component-finder subagent for broad searches.
+- Run SwiftUI Pro review only when asked.
+
+## Build and test
+- Build: {{BUILD_COMMAND}}
+- Test: {{TEST_COMMAND}}
+
+## Architecture (keep to 10 lines)
+- {{ARCHITECTURE_NOTE}}
+
+## Decisions
+- {{DECISION}}
+
+## Compact instructions
+When compacting, keep: open tasks, files changed this session, decisions made, unresolved questions to the developer. Drop: tool output, file contents already saved to disk, exploration that led nowhere, completed step-by-step narration.
