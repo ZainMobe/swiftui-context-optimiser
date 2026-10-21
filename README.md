@@ -42,28 +42,45 @@ claude plugin install swiftui-context-optimiser@wapp-local
 
 Update later with `claude plugin marketplace update wapp-local` then `claude plugin update swiftui-context-optimiser`.
 
-Local checkout (development):
+Requires `python3` on PATH (ships with Xcode command line tools).
+
+### Try it for one session without installing
 
 ```bash
-claude plugin marketplace add /Users/zain/Desktop/AI/Plugins/SwiftUI-Context-Optimiser
+git clone https://github.com/ZainMobe/swiftui-context-optimiser.git
+claude --plugin-dir ./swiftui-context-optimiser
+```
+
+### Development from a local clone
+
+```bash
+git clone https://github.com/ZainMobe/swiftui-context-optimiser.git
+claude plugin marketplace add ./swiftui-context-optimiser
 claude plugin install swiftui-context-optimiser@wapp-local
 ```
 
-The two cannot be registered at the same time because they share the marketplace name; remove one with `claude plugin marketplace remove wapp-local` before adding the other.
-
-One-off session without installing:
-
-```bash
-claude --plugin-dir /Users/zain/Desktop/AI/Plugins/SwiftUI-Context-Optimiser
-```
+A GitHub marketplace and a local one cannot be registered at the same time because they share the marketplace name. Remove one with `claude plugin marketplace remove wapp-local` before adding the other.
 
 Validate after edits:
 
 ```bash
-claude plugin validate /Users/zain/Desktop/AI/Plugins/SwiftUI-Context-Optimiser
+claude plugin validate ./swiftui-context-optimiser
 ```
 
-Requires `python3` on PATH (ships with Xcode command line tools).
+## Security and trust
+
+This plugin runs hooks and scripts on your machine, so read them before installing. Everything that executes lives in `hooks/` and `scripts/`, and the hooks are registered in `hooks/hooks.json`.
+
+- The Python scripts contain no network calls and do not spawn processes. Check with `grep -rn "urllib\|socket\|subprocess" hooks scripts`.
+- Hooks read project files and write only two things: the component index at `.claude/swiftui-components.md` inside your project, and a small per-session read-tracking file in the session scratch or temp directory.
+- The `digest`, `init-project` and `learn-conventions` commands are skills that Claude runs on request. They edit `CLAUDE.md`, `.claude/` files and auto-memory, and they show what they will change first.
+- The Bash hook rewrites build commands (`xcodebuild`, `swift build`, `swift test`) to filter their output. It does not run anything else.
+
+To report a vulnerability, see [SECURITY.md](SECURITY.md). Please do not open a public issue for it.
+
+## Contributing
+
+Pull requests are welcome. `main` is protected: all changes go through a pull request that the maintainer reviews, and changes to hooks, scripts or the plugin manifest get extra scrutiny. Fork the repo, create a branch, run the evals below, and open a pull request describing the change.
 
 ## First use in a project
 
@@ -86,7 +103,6 @@ Each case runs with and without the plugin and the report shows the delta, the t
 
 - The comment blocker cannot know when you have asked for comments; when you do, say "comments are requested for this file" and Claude will state that and retry. If this becomes a nuisance, remove the `comment_blocker.py` entry from `hooks/hooks.json` and rely on the rule alone.
 - The re-read guard keys on session id and file mtime. Formatters that rewrite files on save change the mtime and legitimately allow a re-read.
-
 - Plugins cannot ship always-on CLAUDE.md or rules files. The SessionStart hook is the only always-on channel, which is why the rule block is short and why `init-project` also writes a CLAUDE.md (so rules survive if the plugin is disabled).
 - A plugin agent named `Explore` registers as `swiftui-context-optimiser:Explore` and does not replace the built-in. The Haiku override must live in `~/.claude/agents/Explore.md`; `init-project` installs it on request. It affects all projects.
 - The build filter only rewrites single-line commands and skips commands already piped through `xcbeautify`, `xcpretty`, `grep`, `tail`, `head` or `tee`. It does not touch Xcode MCP tools.
@@ -99,3 +115,7 @@ Each case runs with and without the plugin and the report shows the delta, the t
 - `.claude/swiftui-components.md` (generated; consider gitignoring)
 - `.claude/conventions.md` (from learn-conventions)
 - `.claude/rules/swift.md` and `CLAUDE.md` (from init-project)
+
+## License
+
+MIT. See [LICENSE](LICENSE).
