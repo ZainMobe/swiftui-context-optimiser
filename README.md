@@ -89,6 +89,14 @@ Pull requests are welcome. `main` is protected: all changes go through a pull re
 3. For existing codebases, run `/swiftui-context-optimiser:learn-conventions`.
 4. Work normally. Run `/swiftui-context-optimiser:digest` when the session start nudge appears.
 
+## Benchmark
+
+Four real tasks on a production SwiftUI app (446 Swift files), each run with the plugin on and off, same models both sides. With the plugin on, every task reused or extended an existing component instead of writing a new one; without it, one did. Cost per task was about 10% lower, the coding model wrote 30% fewer output tokens, and 20% fewer new lines landed in the app.
+
+![Benchmark summary](docs/benchmark/benchmark-summary-linkedin.png)
+
+Full tables, per-task diffs, raw data and caveats (one run per cell, nothing compiled) are in [docs/benchmark](docs/benchmark/README.md).
+
 ## Measuring the effect
 
 `evals/` holds three cases (reuse an existing modifier, no comments in a new view, ask when the request is unclear), each with a scaffolded mini project. Run from the plugin root:

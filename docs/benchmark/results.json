@@ -1,0 +1,267 @@
+{
+ "tasks": [
+  {
+   "task": "T1",
+   "name": "Gallery loading skeleton",
+   "finder": {
+    "model": "claude-haiku-5-5",
+    "requests": 4,
+    "tool_calls": 3,
+    "input_uncached": 8,
+    "cache_write": 90223,
+    "cache_read": 248821,
+    "output": 24,
+    "billed_input_total": 339052,
+    "final_context": 90233,
+    "cost_usd": 0.0138,
+    "cost_norm_usd": 0.0034,
+    "files": 0
+   },
+   "on": {
+    "model": "claude-sonnet-5-5",
+    "requests": 4,
+    "tool_calls": 7,
+    "input_uncached": 8,
+    "cache_write": 36599,
+    "cache_read": 302878,
+    "output": 352,
+    "billed_input_total": 339485,
+    "final_context": 89135,
+    "cost_usd": 0.1253,
+    "cost_norm_usd": 0.0375,
+    "files": 2,
+    "added": 7,
+    "removed": 13
+   },
+   "off": {
+    "model": "claude-sonnet-5-5",
+    "requests": 6,
+    "tool_calls": 9,
+    "input_uncached": 12,
+    "cache_write": 39808,
+    "cache_read": 484647,
+    "output": 617,
+    "billed_input_total": 524467,
+    "final_context": 92290,
+    "cost_usd": 0.1542,
+    "cost_norm_usd": 0.0586,
+    "files": 1,
+    "added": 9,
+    "removed": 1
+   },
+   "quality": {
+    "on": "Extended the existing GallerySkeletonView with a columnCount parameter so it matches the real grid. One source of truth kept.",
+    "off": "Bypassed GallerySkeletonView and inlined a LazyVGrid of GalleryMediaCellSkeleton tiles, leaving GallerySkeletonView orphaned.",
+    "on_reuse": "yes",
+    "off_reuse": "partial"
+   }
+  },
+  {
+   "task": "T2",
+   "name": "Support screen tooltip",
+   "finder": {
+    "model": "claude-haiku-5-5",
+    "requests": 4,
+    "tool_calls": 4,
+    "input_uncached": 8,
+    "cache_write": 34658,
+    "cache_read": 298201,
+    "output": 19,
+    "billed_input_total": 332867,
+    "final_context": 86866,
+    "cost_usd": 0.0073,
+    "cost_norm_usd": 0.0033,
+    "files": 0
+   },
+   "on": {
+    "model": "claude-sonnet-5-5",
+    "requests": 5,
+    "tool_calls": 8,
+    "input_uncached": 10,
+    "cache_write": 38588,
+    "cache_read": 396749,
+    "output": 333,
+    "billed_input_total": 435347,
+    "final_context": 91079,
+    "cost_usd": 0.1395,
+    "cost_norm_usd": 0.0469,
+    "files": 1,
+    "added": 23,
+    "removed": 0
+   },
+   "off": {
+    "model": "claude-sonnet-5-5",
+    "requests": 4,
+    "tool_calls": 5,
+    "input_uncached": 8,
+    "cache_write": 36559,
+    "cache_read": 303588,
+    "output": 602,
+    "billed_input_total": 340155,
+    "final_context": 88996,
+    "cost_usd": 0.1278,
+    "cost_norm_usd": 0.0401,
+    "files": 1,
+    "added": 31,
+    "removed": 0
+   },
+   "quality": {
+    "on": "Reused the existing TooltipView for the bubble; built only the icon button inline.",
+    "off": "Wrote a new inline bubble (Text + background + offset), a duplicate of TooltipView.",
+    "on_reuse": "yes",
+    "off_reuse": "no"
+   }
+  },
+  {
+   "task": "T3",
+   "name": "Exit PIN before leaving gallery",
+   "finder": {
+    "model": "claude-haiku-5-5",
+    "requests": 4,
+    "tool_calls": 4,
+    "input_uncached": 8,
+    "cache_write": 36178,
+    "cache_read": 300179,
+    "output": 21,
+    "billed_input_total": 336365,
+    "final_context": 88390,
+    "cost_usd": 0.0075,
+    "cost_norm_usd": 0.0034,
+    "files": 0
+   },
+   "on": {
+    "model": "claude-sonnet-5-5",
+    "requests": 5,
+    "tool_calls": 11,
+    "input_uncached": 10,
+    "cache_write": 40954,
+    "cache_read": 399989,
+    "output": 300,
+    "billed_input_total": 440953,
+    "final_context": 93413,
+    "cost_usd": 0.1454,
+    "cost_norm_usd": 0.0471,
+    "files": 1,
+    "added": 18,
+    "removed": 1
+   },
+   "off": {
+    "model": "claude-sonnet-5-5",
+    "requests": 7,
+    "tool_calls": 14,
+    "input_uncached": 14,
+    "cache_write": 41962,
+    "cache_read": 576570,
+    "output": 424,
+    "billed_input_total": 618546,
+    "final_context": 94485,
+    "cost_usd": 0.1668,
+    "cost_norm_usd": 0.0661,
+    "files": 1,
+    "added": 21,
+    "removed": 1
+   },
+   "quality": {
+    "on": "Reused ExitPinDialogView, the exact-fit component that was sitting unused.",
+    "off": "Reused PinEntryDialogView in verify mode, copying the title and 6-digit subtitle from AttractView.",
+    "on_reuse": "yes",
+    "off_reuse": "yes"
+   }
+  },
+  {
+   "task": "T4",
+   "name": "Share dialog reset countdown",
+   "finder": {
+    "model": "claude-haiku-5-5",
+    "requests": 5,
+    "tool_calls": 5,
+    "input_uncached": 10,
+    "cache_write": 38217,
+    "cache_read": 391374,
+    "output": 35,
+    "billed_input_total": 429601,
+    "final_context": 90431,
+    "cost_usd": 0.0087,
+    "cost_norm_usd": 0.0043,
+    "files": 0
+   },
+   "on": {
+    "model": "claude-sonnet-5-5",
+    "requests": 4,
+    "tool_calls": 11,
+    "input_uncached": 8,
+    "cache_write": 40292,
+    "cache_read": 304798,
+    "output": 433,
+    "billed_input_total": 345098,
+    "final_context": 92891,
+    "cost_usd": 0.1356,
+    "cost_norm_usd": 0.0389,
+    "files": 2,
+    "added": 28,
+    "removed": 4
+   },
+   "off": {
+    "model": "claude-sonnet-5-5",
+    "requests": 4,
+    "tool_calls": 11,
+    "input_uncached": 8,
+    "cache_write": 49710,
+    "cache_read": 326644,
+    "output": 392,
+    "billed_input_total": 376362,
+    "final_context": 102240,
+    "cost_usd": 0.1609,
+    "cost_norm_usd": 0.0416,
+    "files": 1,
+    "added": 34,
+    "removed": 4
+   },
+   "quality": {
+    "on": "Extended Video360TimeoutCountdownBadge with a label closure and reused it (default keeps old call sites unchanged). Pill styling may be heavy for a dialog.",
+    "off": "Built an inline Text countdown. Clean and arguably closer to 'small text', but a third countdown label in the codebase.",
+    "on_reuse": "yes",
+    "off_reuse": "no"
+   }
+  }
+ ],
+ "probe_prefix_tokens": {
+  "haiku": 76528,
+  "sonnet": 76534
+ },
+ "totals": {
+  "on": {
+   "requests": 18,
+   "tool_calls": 37,
+   "output": 1418,
+   "cost_usd": 0.5458000000000001,
+   "cost_norm_usd": 0.1704,
+   "added": 76,
+   "removed": 18,
+   "files": 6
+  },
+  "off": {
+   "requests": 21,
+   "tool_calls": 39,
+   "output": 2035,
+   "cost_usd": 0.6097,
+   "cost_norm_usd": 0.2064,
+   "added": 95,
+   "removed": 6,
+   "files": 4
+  },
+  "finder": {
+   "requests": 17,
+   "tool_calls": 16,
+   "output": 99,
+   "cost_usd": 0.0373,
+   "cost_norm_usd": 0.0144
+  },
+  "on_total_cost_usd": 0.5831,
+  "on_total_cost_norm_usd": 0.1848,
+  "off_total_cost_usd": 0.6097,
+  "off_total_cost_norm_usd": 0.2064,
+  "reuse_on": 4,
+  "reuse_off": 1
+ }
+}
