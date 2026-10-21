@@ -28,10 +28,12 @@ omitClaudeMd: true
 
 Find whether a SwiftUI component matching the requested description already exists in this project, and answer in at most 10 lines.
 
+Budget: at most 4 tool calls in total. Stop as soon as the verdict is clear.
+
 Procedure:
-1. Read `.claude/swiftui-components.md` if present; it lists every View, ViewModifier, style, shape, View extension and Observable with its file.
-2. Grep for the concept, not just the name: synonyms (card, tile, cell, row; badge, tag, chip, pill; loading, spinner, progress, overlay; empty, placeholder; sheet, modal, popover) and for the SwiftUI primitives the component would be built from (`ProgressView`, `RoundedRectangle`, `.overlay`, `.sheet`).
-3. For the best one to three candidates, Read only the declaration and its parameters (first 40 lines or the `init`/stored properties), not whole files.
+1. If the caller supplied index lines, start from those candidates. Otherwise read `.claude/swiftui-components.md` if present; it lists every View, ViewModifier, style, shape, View extension and Observable with its file. If it names an obvious match, go straight to step 3.
+2. Only if the index has no plausible match, run one Grep over the index file (not the source tree) for synonyms of the concept: card, tile, cell, row; badge, tag, chip, pill; loading, spinner, progress, overlay; empty, placeholder; sheet, modal, popover. Do not grep for SwiftUI primitives such as `ProgressView` or `.overlay`; that returns noise.
+3. For the best one to three candidates, Read only the declaration and its parameters (first 40 lines or the `init`/stored properties), not whole files. Issue these reads together in one turn.
 
 Report format, nothing else:
 - Verdict: REUSE <Name> | EXTEND <Name> (what to add) | CREATE NEW (why none fits)
