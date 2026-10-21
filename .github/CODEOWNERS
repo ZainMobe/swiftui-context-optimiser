@@ -1,0 +1,8 @@
+# Every file in this repo requires review from the owner.
+* @ZainMobe
+
+# Extra attention: anything that executes on a user's machine.
+/hooks/ @ZainMobe
+/scripts/ @ZainMobe
+/.claude-plugin/ @ZainMobe
+/.github/ @ZainMobe
