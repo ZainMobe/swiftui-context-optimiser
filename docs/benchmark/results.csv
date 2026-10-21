@@ -1,0 +1,13 @@
+task,side,model,requests,tool_calls,output_tokens,final_context_tokens,cost_usd,cost_normalised_usd,files,lines_added,lines_removed,reused_existing_component
+Gallery loading skeleton,finder (plugin on),claude-haiku-5-5,4,3,24,90233,0.0138,0.0034,0,0,0,
+Gallery loading skeleton,implementer (plugin on),claude-sonnet-5-5,4,7,352,89135,0.1253,0.0375,2,7,13,yes
+Gallery loading skeleton,implementer (plugin off),claude-sonnet-5-5,6,9,617,92290,0.1542,0.0586,1,9,1,partial
+Support screen tooltip,finder (plugin on),claude-haiku-5-5,4,4,19,86866,0.0073,0.0033,0,0,0,
+Support screen tooltip,implementer (plugin on),claude-sonnet-5-5,5,8,333,91079,0.1395,0.0469,1,23,0,yes
+Support screen tooltip,implementer (plugin off),claude-sonnet-5-5,4,5,602,88996,0.1278,0.0401,1,31,0,no
+Exit PIN before leaving gallery,finder (plugin on),claude-haiku-5-5,4,4,21,88390,0.0075,0.0034,0,0,0,
+Exit PIN before leaving gallery,implementer (plugin on),claude-sonnet-5-5,5,11,300,93413,0.1454,0.0471,1,18,1,yes
+Exit PIN before leaving gallery,implementer (plugin off),claude-sonnet-5-5,7,14,424,94485,0.1668,0.0661,1,21,1,yes
+Share dialog reset countdown,finder (plugin on),claude-haiku-5-5,5,5,35,90431,0.0087,0.0043,0,0,0,
+Share dialog reset countdown,implementer (plugin on),claude-sonnet-5-5,4,11,433,92891,0.1356,0.0389,2,28,4,yes
+Share dialog reset countdown,implementer (plugin off),claude-sonnet-5-5,4,11,392,102240,0.1609,0.0416,1,34,4,no

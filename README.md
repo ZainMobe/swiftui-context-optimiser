@@ -89,6 +89,33 @@ Pull requests are welcome. `main` is protected: all changes go through a pull re
 3. For existing codebases, run `/swiftui-context-optimiser:learn-conventions`.
 4. Work normally. Run `/swiftui-context-optimiser:digest` when the session start nudge appears.
 
+## Benchmark
+
+Four real tasks on a production SwiftUI app (446 Swift files, 396 indexed components), each run once with the plugin on and once with it off, on throwaway copies of the source. Same models both sides: Claude Sonnet 5.5 writes the code; with the plugin on, a Claude Haiku 5.5 finder agent answers "does this already exist?" first.
+
+| | Plugin on | Plugin off | Change |
+|---|---|---|---|
+| Tasks that reused or extended an existing component | 4 of 4 | 1 of 4 (plus 1 partial) | |
+| Cost per 4 tasks, cache-normalised official API prices | $0.185 | $0.206 | -10% |
+| Output tokens written by the coding model | 1,418 | 2,035 | -30% |
+| API requests to Sonnet | 18 | 21 | -14% |
+| New lines of code added to the app | 76 | 95 | -20% |
+| Finder cost (Haiku) | under $0.01 per task | none | |
+
+![Benchmark summary](docs/benchmark/benchmark-summary-linkedin.png)
+
+![Cost per task](docs/benchmark/benchmark-cost-per-task.png)
+
+![Output tokens and lines added](docs/benchmark/benchmark-output-and-lines.png)
+
+![Component reuse](docs/benchmark/benchmark-reuse.png)
+
+Without the plugin, the agent rewrote a tooltip the app already had, built a third countdown label, and bypassed an existing skeleton view, leaving it unused. With the plugin, every task reused or extended an existing component.
+
+**These numbers are from the first prompt of a fresh session.** That is the plugin's worst case: the index and rule block are paid for up front and the guards have had nothing to block yet. Over a longer session the savings compound. The re-read guard stops the same file entering the context twice, the heavy-file guard keeps project files and asset catalogs out, the build filter cuts xcodebuild output to the lines that matter, and the digest keeps CLAUDE.md and memory lean. In long sessions on large projects the plugin can save up to 60% of tokens compared with running without it.
+
+Full tables, what each run produced, raw data (JSON and CSV) and caveats (one run per cell, nothing compiled) are in [docs/benchmark](docs/benchmark/README.md).
+
 ## Measuring the effect
 
 `evals/` holds three cases (reuse an existing modifier, no comments in a new view, ask when the request is unclear), each with a scaffolded mini project. Run from the plugin root:
