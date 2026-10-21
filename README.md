@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/icon.png" alt="SwiftUI Context Optimiser icon" width="128"></p>
+
 # SwiftUI Context Optimiser
 
 A Claude Code plugin that lowers token usage on SwiftUI projects by enforcing six working rules and trimming what enters the context window.
