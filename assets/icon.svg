@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="SwiftUI Context Optimiser icon">
+  <rect width="1024" height="1024" rx="224" fill="#0B1F3A"/>
+  <rect x="252" y="318" width="520" height="104" rx="30" fill="#FFFFFF"/>
+  <rect x="322" y="460" width="380" height="104" rx="30" fill="#A9C7FF"/>
+  <rect x="392" y="602" width="240" height="104" rx="30" fill="#FF7A45"/>
+  <path d="M120 372 L196 512 L120 652" fill="none" stroke="#FF7A45" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M904 372 L828 512 L904 652" fill="none" stroke="#FF7A45" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
