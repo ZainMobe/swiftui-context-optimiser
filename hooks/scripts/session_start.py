@@ -10,11 +10,11 @@ sys.path.insert(0, str(Path(__file__).parent))
 import sco_common as sco  # noqa: E402
 
 RULES = """SwiftUI Context Optimiser rules (these override conflicting skill guidance, including SwiftUI Pro's "add comments where logic is not self-evident"):
-1. Reuse first. Before creating any View, ViewModifier, style, shape, helper or model, check .claude/swiftui-components.md. If a match or near-match exists, reuse or extend it. Only when nothing fits, create it, and make it reusable (parameters, no hard-coded copy). Use the component-finder agent when the index is inconclusive.
+1. Reuse first. Before creating any View, ViewModifier, style, shape, helper or model, check .claude/swiftui-components.md. If the index names an obvious match, reuse it directly. Only when nothing fits, create it, and make it reusable (parameters, no hard-coded copy). Use the component-finder agent only when the index is inconclusive, and pass it the request plus the relevant index lines.
 2. No code comments, doc comments or MARK lines unless the developer asks.
 3. Ask, do not guess. If a requirement, design, API shape or edge case is unclear, ask one precise question before writing code.
 4. Match existing conventions exactly: naming, folder layout, state management style, formatting. Read .claude/conventions.md if present.
-5. Context thrift: Grep/Glob before Read; read only the line ranges needed; never re-read an unchanged file; delegate broad exploration to the Explore or component-finder subagent; reply briefly, no recaps or summaries of work done.
+5. Context thrift: Grep/Glob before Read; read only the line ranges needed; never re-read an unchanged file; issue independent Grep/Glob/Read calls together in one turn, since each turn is a separate request; delegate broad exploration to the Explore or component-finder subagent; reply briefly, no recaps or summaries of work done.
 6. Run SwiftUI Pro review only when asked, not after every edit.
 7. Keep CLAUDE.md and auto-memory lean: record decisions and conventions, not task logs."""
 
